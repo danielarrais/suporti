@@ -1,0 +1,11 @@
+main{
+    flex: 1 0 auto !important;
+}
+
+.nav-wrapper{
+    background: #5d4037 !important;
+}
+
+.borderTable{
+    border-bottom: 1px solid #d0d0d0 !important;
+}
