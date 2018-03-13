@@ -6,7 +6,7 @@
         <div class="center-align">
             <div class="text-center">
                 <h3>Deseja realizar um novo chamado?</h3>
-                <a href="{{route('user')}}" class="waves-effect waves-light btn-large">iniciar</a>
+                <a href="{{route('user.chamado')}}" class="waves-effect waves-light btn-large">iniciar</a>
             </div>
         </div>
         <br>
@@ -32,7 +32,7 @@
                 <td>{{$chamado->getDescricao()}}</td>
                 <td>{{$chamado->getUrgencia()}}</td>
                 <td>{{$chamado->getStatus->getStatus()}}</td>
-                <td class="center-align"><a href="{{route('user.chauser.excluir', $chamado->getId())}}" class="waves-effect waves-light btn">Já resolvi</a></td>
+                <td class="center-align"><a href="{{route('user.chamado.excluir', $chamado->getId())}}" class="waves-effect waves-light btn">Já resolvi</a></td>
             </tr>
             @endforeach
             </tbody>
