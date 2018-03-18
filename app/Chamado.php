@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Chamado extends Model
 {
@@ -82,7 +83,7 @@ class Chamado extends Model
     }
     public function getStatus()
     {
-        return $this->hasOne('App\StatusAtendimento','id_status','id_status');
+        return $this->belongsTo('App\StatusAtendimento', 'id_status');
     }
 
     public function setStatus($status)
@@ -92,41 +93,51 @@ class Chamado extends Model
 
     public function getUsuario()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\Usuario',"id_usuario");
     }
 
-    public function setUsuario(Usuario $usuario)
+    public function setUsuario($usuario)
     {
-        $this->attributes['id_usuario'] = $usuario->getId();
-    }
-
-    public function getCategoria()
-    {
-        return $this->hasOne('App\Categoria');
-    }
-
-    public function setCategoria(Categoria $categoria)
-    {
-        $this->attributes['id_categoria'] = $categoria->getId();
+        $this->attributes['id_usuario'] = $usuario;
     }
 
     public function getAtendente()
     {
-        return $this->hasOne('App\Categoria');
+        return $this->belongsTo('App\Usuario',"id_atendente");
     }
 
-    public function setAtendente(Usuario $atendente)
+    public function setAtendente($usuario)
     {
-        $this->attributes['id_atendente'] = $atendente->getId();
+        $this->attributes['id_atendente'] = $usuario;
+    }
+
+    public function getCategoria()
+    {
+        return $this->belongsTo('App\Categoria', "id_categoria");
+    }
+
+    public function setCategoria($categoria)
+    {
+        $this->attributes['id_categoria'] = $categoria;
     }
 
     public function getAvaliacao()
     {
-        return $this->hasOne('App\Categoria');
+        return $this->belongsTo('App\Avaliacao', 'id_avaliacao');
     }
 
     public function setAvaliacao(Usuario $atendente)
     {
-        $this->attributes['id_atendente'] = $atendente->getId();
+        $this->attributes['id_atendente'] = $atendente;
+    }
+
+    public static function chamadosAbertos(){
+        return Chamado::where('id_status', '=', 1)->get();
+    }
+    public static function chamadosEmAtendimento(){
+        return Chamado::where('id_status', '=', 2)->get();
+    }
+    public static function chamadosFinalizados(){
+        return Chamado::where('id_status', '=', 3)->get();
     }
 }

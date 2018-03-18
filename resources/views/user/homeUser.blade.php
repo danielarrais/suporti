@@ -11,38 +11,23 @@
         </div>
         <br>
         <div class="row">
-            <h5 class="center-align col s12">Chamados realizados hoje</h5>
+            <h5 class="center-align col s12">Chamados abertos</h5>
         </div>
-
-        <table>
-            <thead>
-            <tr class="grey grey-text text-lighten-4">
-                <th>Titulo</th>
-                <th>Descrição</th>
-                <th>Urgência</th>
-                <th>Atendimento</th>
-                <th class="center-align">Ação</th>
-            </tr>
-            </thead>
-
-            <tbody class="bordered">
+        <div class="row">
             @foreach($chamados as $chamado)
-            <tr>
-                <td>{{$chamado->getTitulo()}}</td>
-                <td>{{$chamado->getDescricao()}}</td>
-                <td>{{$chamado->getUrgencia()}}</td>
-                <td>{{$chamado->getStatus->getStatus()}}</td>
-                <td class="center-align"><a href="{{route('user.chamado.excluir', $chamado->getId())}}" class="waves-effect waves-light btn">Já resolvi</a></td>
-            </tr>
+                <div class="col s12 m12">
+                    <div class="card grey lighten-3">
+                        @include('include.conteudoCardChamado')
+                        <div class="card-action">
+                            <a href="{{route('user.chamado.vizualizar', $chamado->getId())}}">Visualizar</a>
+                        </div>
+                    </div>
+                </div>
             @endforeach
-            </tbody>
-
-        </table>
-        <caption>
-            <div class="row">
-                <a href="#"><h5 class="center-align col s12 no-padding indigo-text">Dias anteriores...</h5></a>
-            </div>
-        </caption>
+        </div>
+        <div class="row">
+            <a href="#"><h5 class="center-align col s12 no-padding indigo-text">Dias anteriores...</h5></a>
+        </div>
         <br>
     </div>
 

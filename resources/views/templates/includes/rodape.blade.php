@@ -17,6 +17,7 @@
         Materialize.updateTextFields();
         $('select').material_select();
         $(".dropdown-button").dropdown();
+        $('ul.tabs').tabs('select_tab', 'tab_id');
     });
 </script>
 </body>

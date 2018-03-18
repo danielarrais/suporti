@@ -13,5 +13,7 @@ class Avaliacao extends Model
     //NOME DA TABELA
     protected $table = "avaliacoes";
 
-
+    public function chamado(){
+        return $this->hasOne('App\Avaliacao', 'id_avaliacao');
+    }
 }

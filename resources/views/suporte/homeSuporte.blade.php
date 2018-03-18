@@ -4,39 +4,78 @@
     <div class="container">
         <br>
         <div class="row">
-            <h5 class="center-align col s12">Chamados realizados hoje</h5>
-        </div>
-
-        <table>
-            <thead>
-            <tr class="grey grey-text text-lighten-4">
-                <th>Titulo</th>
-                <th>Descrição</th>
-                <th>Urgência</th>
-                <th>Atendimento</th>
-                <th class="center-align">Ação</th>
-            </tr>
-            </thead>
-
-            <tbody class="bordered">
-            @foreach($chamados as $chamado)
-                <tr>
-                    <td>{{$chamado->getTitulo()}}</td>
-                    <td>{{$chamado->getDescricao()}}</td>
-                    <td>{{$chamado->getUrgencia()}}</td>
-                    <td>{{$chamado->getStatus->getStatus()}}</td>
-                    <td class="center-align"><a href="{{route('suporte.chamado.atender', $chamado->getId())}}" class="waves-effect waves-light btn">Atender</a></td>
-                </tr>
-            @endforeach
-            </tbody>
-
-        </table>
-        <caption>
             <div class="row">
-                <a href="#"><h5 class="center-align col s12 no-padding indigo-text">Dias anteriores...</h5></a>
+                <div class="col s12">
+                    <ul class="tabs grey lighten-3">
+                        <li class="tab col s3"><a class="active" href="#todos">Todos</a></li>
+                        <li class="tab col s3"><a href="#abertos">Abertos</a></li>
+                        <li class="tab col s3"><a href="#emAtendimento">Em atendimento</a></li>
+                        <li class="tab col s3"><a href="#finalizados">Finalizados</a></li>
+                    </ul>
+                </div>
+                <div id="todos" class="col s12">
+                    <div class="row">
+                        @foreach($chamados as $chamado)
+                            <div class="col s12 m12">
+                                <div class="card grey lighten-3">
+                                    @include('include.conteudoCardChamado')
+                                    <div class="card-action">
+                                        <a href="{{route('suporte.chamado.atender', $chamado->getId())}}">Pegar</a>
+                                        <a href="{{route('suporte.chamado.vizualizar', $chamado->getId())}}">Visualizar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div id="abertos" class="col s12">
+                    <div class="row">
+                        @foreach($chamadosAbertos as $chamado)
+                            <div class="col s12 m12">
+                                <div class="card grey lighten-3">
+                                    @include('include.conteudoCardChamado')
+                                    <div class="card-action">
+                                        <a href="{{route('suporte.chamado.atender', $chamado->getId())}}">Pegar</a>
+                                        <a href="{{route('suporte.chamado.vizualizar', $chamado->getId())}}">Visualizar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div id="emAtendimento" class="col s12"><div class="row">
+                        @foreach($chamadosEmAtendimento as $chamado)
+                            <div class="col s12 m12">
+                                <div class="card grey lighten-3">
+                                    @include('include.conteudoCardChamado')
+                                    <div class="card-action">
+                                        <a href="{{route('suporte.chamado.atender', $chamado->getId())}}">Pegar</a>
+                                        <a href="{{route('suporte.chamado.vizualizar', $chamado->getId())}}">Visualizar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div id="finalizados" class="col s12"><div class="row">
+                        @foreach($chamadosFinalizados as $chamado)
+                            <div class="col s12 m12">
+                                <div class="card grey lighten-3">
+                                    @include('include.conteudoCardChamado')
+                                    <div class="card-action">
+                                        <a href="{{route('suporte.chamado.atender', $chamado->getId())}}">Pegar</a>
+                                        <a href="{{route('suporte.chamado.vizualizar', $chamado->getId())}}">Visualizar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-        </caption>
+        </div>
+        <div class="row">
+            <a href="#"><h5 class="center-align col s12 no-padding indigo-text">Dias anteriores...</h5></a>
+        </div>
         <br>
-    </div>
 
 @endsection

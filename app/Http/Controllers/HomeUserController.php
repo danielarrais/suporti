@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Chamado;
+use App\Usuario;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeUserController extends Controller
 {
     public function listaChamados(){
-        $chamados = Chamado::all();
+        $chamados = Usuario::usuarioLogado()->getChamados();
         return view('user.homeUser', compact('chamados'));
     }
 
@@ -22,6 +24,7 @@ class HomeUserController extends Controller
         $chamado->setDescricao($req['descricao']);
         $chamado->setHAbertura(date("Y-m-d H:i:s"));
         $chamado->setUrgencia($req['urgencia']);
+        $chamado->setUsuario(Usuario::usuarioLogado()->getId());
         $chamado->save();
         return view('user.sucessochamado');
     }
@@ -36,5 +39,10 @@ class HomeUserController extends Controller
         $chamado->setStatus(3);
         $chamado->save();
         return redirect()->route('suporte.home');
+    }
+
+    public function carregarChamado($id){
+        $chamado = Chamado::find($id);
+        return view('suporte.visualizarChamado', compact($chamado));
     }
 }

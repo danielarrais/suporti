@@ -32,6 +32,6 @@ class StatusAtendimento extends Model
         $this->attributes['status'] = $status;
     }
     public function chamados(){
-        return $this->belongsTo('App\Chamado');
+        return $this->hasOne('App\StatusAtendimento','id_status','id_status');
     }
 }
