@@ -20,6 +20,9 @@
                         <p id="status{{$perfil -> getId()}}">{{$perfil->getEmail()}}</p>
                     </div>
                 </div>
+                <div class="right-align">
+                    <a class="grey-text text-darken-4" href="{{URL::previous()}}">Voltar</a>
+                </div>
             </div>
         </div>
     </div>
