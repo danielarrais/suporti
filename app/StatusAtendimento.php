@@ -9,9 +9,6 @@ class StatusAtendimento extends Model
     public $timestamps = false;
     protected $table = "status_atendimento";
     protected $primaryKey = 'id_status';
-    protected $fillable = [
-        'id','status'
-    ];
 
     public function getId()
     {

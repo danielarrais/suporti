@@ -26,19 +26,35 @@
                         <a href="{{route('site.login')}}" class="write">Login</a>
                     </ul>
                 @else
+
+
                     <ul class="right hide-on-med-and-down">
+                        <ul id="dropdown4" class="dropdown-content">
+                            <li><a href="{{route('suporte.home')}}">Chamados</a></li>
+                        </ul>
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown4">Suporte<i
+                                        class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id="dropdown1" class="dropdown-content">
+                            <li><a href="{{route('user.home')}}">Chamados</a></li>
                             <li><a href="#!">Perfil</a></li>
                             <li><a href="{{route('site.login.sair')}}">Sair</a></li>
                         </ul>
-                        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{Auth::user()->name}}<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{Auth::user()->name}}<i
+                                        class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
+                        <ul id="dropdown3" class="dropdown-content">
+                            <li><a href="{{route('suporte.home')}}">Ver chamados</a></li>
+                        </ul>
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown3">Suporte<i
+                                        class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id="dropdown2" class="dropdown-content">
+                            <li><a href="{{route('user.home')}}">Chamados</a></li>
                             <li><a href="#!">Perfil</a></li>
                             <li><a href="{{route('site.login.sair')}}">Sair</a></li>
                         </ul>
-                        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">{{Auth::user()->name}}<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">{{Auth::user()->name}}<i
+                                        class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
                 @endif
             </div>

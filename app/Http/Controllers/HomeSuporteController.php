@@ -10,10 +10,7 @@ class HomeSuporteController extends Controller
 {
     public function listaChamados(){
         $chamados = Chamado::all();
-        $chamadosAbertos = Chamado::chamadosAbertos();
-        $chamadosEmAtendimento = Chamado::chamadosEmAtendimento();
-        $chamadosFinalizados = Chamado::chamadosFinalizados();
-        return view('suporte.homeSuporte', compact('chamados', 'chamadosAbertos','chamadosFinalizados','chamadosEmAtendimento'));
+        return view('suporte.homeSuporte', compact('chamados'));
     }
 
     public function atenderChamado($id){

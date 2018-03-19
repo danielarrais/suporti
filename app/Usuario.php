@@ -21,7 +21,8 @@ class Usuario extends Authenticatable
     private $sobrenome;
     private $nome;
     private $senha;
-    private $tipo;
+    private $email;
+    private $funcao;
     private $setor;
     private $nivel;
 
@@ -76,6 +77,22 @@ class Usuario extends Authenticatable
     /**
      * @return mixed
      */
+    public function getEmail()
+    {
+        return $this->email = $this->attributes['email'];
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email =  $this->attributes['email'] = $email;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getSenha()
     {
         return $this->senha = $this->attributes['password'];
@@ -92,17 +109,17 @@ class Usuario extends Authenticatable
     /**
      * @return mixed
      */
-    public function getTipo()
+    public function getFuncao()
     {
-        return $this->tipo = $this->attributes['id_tipo'];
+        return $this->belongsTo('App\Funcao',"id_funcao");
     }
 
     /**
-     * @param mixed $tipo
+     * @param mixed $funcao
      */
-    public function setTipo($tipo)
+    public function setFuncao($funcao)
     {
-        $this->attributes['id_tipo']= $tipo;
+        $this->attributes['id_funcao']= $funcao;
     }
 
     /**
@@ -110,7 +127,7 @@ class Usuario extends Authenticatable
      */
     public function getSetor()
     {
-        return $this->setor = $this->attributes['id_setor'];
+        return $this->belongsTo('App\Setor',"id_setor");
     }
 
     /**
@@ -139,7 +156,7 @@ class Usuario extends Authenticatable
 
     public function getChamados()
     {
-        return $this->hasMany('App\Usuario', "id_usuario");
+        return $this->hasMany('App\Chamado', "id_usuario", "id")->getResults();
     }
 
     public function getChamadosAtendidos(){

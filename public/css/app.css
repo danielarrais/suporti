@@ -13,3 +13,54 @@ main{
 .no-padding-bot{
     padding-bottom: 0px !important;
 }
+
+.no-padding-lef{
+    padding-left: 0px !important;
+}
+
+.no-padding-rig{
+    padding-right: 0px !important;
+}
+
+.no-padding-top{
+    padding-top: 0px !important;
+}
+
+.no-margin{
+    margin: 0 !important;
+}
+
+.no-border{
+    border: 0 !important;
+}
+
+.no-shadow{
+    webkit-box-shadow: 0 !important;
+    box-shadow : none !important;
+}
+.padding-min{
+    padding: 10px !important;
+}
+
+.padding-min-top{
+    padding-top: 10px !important;
+}
+
+.padding-min-bot{
+    padding-bottom: 10px !important;
+}
+
+.padding-min-lef{
+    padding-left: 10px !important;
+}
+.padding-min-rig{
+    padding-right: 10px !important;
+}
+
+.padding-min-hori{
+    padding:10px 0 10px 0 !important;
+}
+
+.padding-min-lat{
+    padding:0 10px 0 10px !important;
+}

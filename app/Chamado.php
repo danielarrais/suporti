@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +12,7 @@ class Chamado extends Model
     protected $primaryKey = 'id_chamado';
 
     protected $fillable = [
-        'id','titulo','decricao','urgencia','hAbertura'
+        'id', 'titulo', 'decricao', 'urgencia', 'hAbertura'
     ];
 
     public function getId()
@@ -46,20 +47,12 @@ class Chamado extends Model
 
     public function getUrgencia()
     {
-        $urgencia = $this->attributes['urgencia'];
-        switch ($urgencia){
-            case 1:
-                return  'Urgente';
-            case 2:
-                return  'Menos urgente';
-            case 3:
-                return  'Nada urgente';
-        }
+        return $this->belongsTo("App\NivelUrgencia", "id_nivel_urgencia");
     }
 
     public function setUrgencia($urgencia)
     {
-        $this->attributes['urgencia'] = $urgencia;
+        $this->attributes['id_nivel_urgencia'] = $urgencia;
     }
 
     public function getHAbertura()
@@ -81,6 +74,7 @@ class Chamado extends Model
     {
         $this->attributes['horario_fechamento'] = $hFechamento;
     }
+
     public function getStatus()
     {
         return $this->belongsTo('App\StatusAtendimento', 'id_status');
@@ -93,7 +87,7 @@ class Chamado extends Model
 
     public function getUsuario()
     {
-        return $this->belongsTo('App\Usuario',"id_usuario");
+        return $this->belongsTo('App\Usuario', "id_usuario");
     }
 
     public function setUsuario($usuario)
@@ -103,7 +97,7 @@ class Chamado extends Model
 
     public function getAtendente()
     {
-        return $this->belongsTo('App\Usuario',"id_atendente");
+        return $this->belongsTo('App\Usuario', "id_atendente");
     }
 
     public function setAtendente($usuario)
@@ -131,13 +125,26 @@ class Chamado extends Model
         $this->attributes['id_atendente'] = $atendente;
     }
 
-    public static function chamadosAbertos(){
+    public static function chamadosAbertos()
+    {
         return Chamado::where('id_status', '=', 1)->get();
     }
-    public static function chamadosEmAtendimento(){
+
+    public static function chamadosEmAtendimento()
+    {
         return Chamado::where('id_status', '=', 2)->get();
     }
-    public static function chamadosFinalizados(){
+
+    public static function chamadosFinalizados()
+    {
         return Chamado::where('id_status', '=', 3)->get();
+    }
+
+    public function tempoDesdeAbertura(){
+        $date1 = Carbon::createFromFormat('Y-m-d', date('Y-m-d', strtotime($this->getHAbertura()))."");
+        $date2 = Carbon::createFromFormat('Y-m-d', date("Y-m-d")."");
+
+        $value = $date2->diffInDays($date1);
+        return $value;
     }
 }

@@ -6,11 +6,14 @@ Route::post('/login/validar', ['as'=>'site.login.validar', 'uses'=>'LoginControl
 Route::get('/login/sair', ['as'=>'site.login.sair', 'uses'=>'LoginController@sair']);
 
 Route::group(['middleware'=>'auth'], function(){
+//user
+
     Route::get('/user/chamados', ['as'=>'user.home', 'uses'=>'HomeUserController@listaChamados']);
     Route::get('/user/chamado/novo', ['as'=>'user.chamado', 'uses'=>'HomeUserController@index']);
     Route::get('/user/chamado/excluir/{id}', ['as'=>'user.chamado.excluir', 'uses'=>'HomeUserController@excluirChamado']);
     Route::get('/user/chamado/visualizar/{id}', ['as'=>'user.chamado.vizualizar', 'uses'=>'HomeUserController@carregarChamado']);
     Route::post('/user/chamado/novo/sucesso', ['as'=>'user.chamado.sucesso', 'uses'=>'HomeUserController@salvar']);
+    Route::get('/perfil/visualizar/{id}', ['as'=>'user.perfil.vizualizar', 'uses'=>'VisualizarPerfilController@carregarPerfil']);
 
 //suporte
 
