@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('id_funcao')->unsigned();
             $table->integer('id_setor')->unsigned();
-                $table->integer('id_nivel')->unsigned();
+            $table->integer('id_nivel')->unsigned();
             $table->foreign('id_funcao')->references('id_funcao')->on('funcao');
             $table->foreign('id_setor')->references('id_setor')->on('setores');
             $table->foreign('id_nivel')->references('id_nivel')->on('niveis');
