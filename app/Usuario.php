@@ -143,7 +143,7 @@ class Usuario extends Authenticatable
      */
     public function getNivel()
     {
-        return $this->nivel = $this->attributes['id_nivel'];
+        return $this->belongsTo("App\Nivel", "id_nivel");
     }
 
     /**

@@ -10,10 +10,7 @@
         </div>
         <br>
         <div class="row">
-            <h5 class="center-align col s12">Seus chamados</h5>
-        </div>
-        <div class="row">
-            @include('include.listagemChamados')
+            @include('includes_uteis.chamados.listagemChamados')
         </div>
     </div>
 @endsection

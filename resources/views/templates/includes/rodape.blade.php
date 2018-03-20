@@ -19,6 +19,7 @@
         $(".dropdown-button").dropdown();
         $('ul.tabs').tabs('select_tab', 'tab_id');
         $('.collapsible').collapsible();
+        $('.modal').modal();
     });
 </script>
 </body>

@@ -1,7 +1,7 @@
 <div class="card no-shadow no-border">
     <div class="card-content no-padding-bot text-darken-4">
         <span class="card-title"> <b>Chamado {{$chamado -> getId()}}
-                : {{$chamado->getTitulo()}}</b> <label>À {{$chamado->tempoDesdeAbertura()}} dias</label> </span>
+                : {{$chamado->getTitulo()}}</b> <label>a {{$chamado->tempoDesdeAbertura()}} dia(s)</label> </span>
         <div class="row">
             <div class="col s3 m3">
                 <label for="autor{{$chamado -> getId()}}">Autor:</label>
@@ -11,7 +11,7 @@
             </div>
             <div class="col s2 m2">
                 <label for="status{{$chamado -> getId()}}">Status:</label>
-                <p id="status{{$chamado -> getId()}}">{{$chamado->getStatus->getStatus()}}</p>
+                <p id="status{{$chamado -> getId()}}">{{$chamado->getStatus->getStatus()}} @include('includes_uteis.chamados._card_ctions.modalRejeicao')</p>
             </div>
             <div class="col s4 m4">
                 <label for="abertura{{$chamado -> getId()}}">Horário de abertura:</label>
@@ -30,7 +30,7 @@
                     <p id="abertura{{$chamado -> getId()}}">{{date('d \d\o m \d\e Y', strtotime($chamado->getHFechamento()))}}
                         às {{date('h\hi', strtotime($chamado->getHFechamento()))}}</p>
                 @else
-                    <p id="atendente{{$chamado -> getId()}}">Ainda não finalizado</p>
+                    <p id="atendente{{$chamado -> getId()}}">-</p>
                 @endif
             </div>
             <div class="col s2 m2">
@@ -40,19 +40,16 @@
             <div class="col s5 m5">
                 <label for="descricao{{$chamado -> getId()}}">Descrição:</label>
                 <p id="descricao{{$chamado -> getId()}}">{{$chamado->getDescricao()}}</p>
+                @if($chamado->getPrint != null)
+                    <p><b>Print: </b><a target="_blank"
+                                        href="{{url($chamado->getPrint->getUrl())}}">{{$chamado->getPrint->getNome()}}</a>
+                    </p>
+                @endif
             </div>
         </div>
     </div>
     <div class="card-action">
-        @if(true)
-            @if($chamado->getStatus->getId() == 1)
-                <div class="right-align">
-                    <a class="left" href="{{route('suporte.chamado.atender', $chamado->getId())}}">Pegar</a>
-                </div>
-            @endif
-        @endif
-        <div class="right-align">
-            <a class="grey-text text-darken-4" href="{{route('suporte.home')}}">Voltar</a>
-        </div>
+        @include('includes_uteis.chamados._card_ctions.cardActions')
+        <a class=" right grey-text text-darken-4" href="{{URL::previous()}}">Voltar</a>
     </div>
 </div>

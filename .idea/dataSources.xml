@@ -24,5 +24,11 @@
         <property name="enable_load_extension" value="true" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="PostgreSQL" uuid="0d8e471e-585d-438c-9f78-be8a4c2afc26">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/suporti</jdbc-url>
+    </data-source>
   </component>
 </project>

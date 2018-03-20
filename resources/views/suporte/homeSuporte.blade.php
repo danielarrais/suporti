@@ -3,8 +3,7 @@
 @section('corpo')
     <div class="container">
         <br>
-            <h3>Chamados</h3>
-            @include('include.listagemChamados')
+            @include('includes_uteis.chamados.listagemChamados')
         <br>
     </div>
 @endsection

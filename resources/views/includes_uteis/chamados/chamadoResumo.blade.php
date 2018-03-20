@@ -2,7 +2,7 @@
     <div class="card grey lighten-3">
         <div class="card-content no-padding-bot text-darken-4">
             <span class="card-title"> <b>Chamado {{$chamado -> getId()}} :</b> {{$chamado->getTitulo()}}
-                <label>À {{$chamado->tempoDesdeAbertura()}} dias</label></span>
+                <label>a {{$chamado->tempoDesdeAbertura()}} dia(s)</label></span>
             <div class="row">
                 <div class="col s3 m3">
                     <label for="autor{{$chamado -> getId()}}">Autor:</label>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col s3 m3">
                     <label for="status{{$chamado -> getId()}}">Status:</label>
-                    <p id="status{{$chamado -> getId()}}">{{$chamado->getStatus->getStatus()}}</p>
+                    <p id="status{{$chamado -> getId()}}">{{$chamado->getStatus->getStatus()}} @include('includes_uteis.chamados._card_ctions.modalRejeicao')</p>
                 </div>
                 <div class="col s3 m3">
                     <label for="atendente{{$chamado -> getId()}}">Atendente:</label>
@@ -32,10 +32,7 @@
             </div>
         </div>
         <div class="card-action">
-            @if($chamado->getStatus->getId() == 1)
-                <a href="{{route('suporte.chamado.atender', $chamado->getId())}}">Pegar</a>
-            @endif
-            <a href="{{route('suporte.chamado.vizualizar', $chamado->getId())}}">Visualizar</a>
+            @include('includes_uteis.chamados._card_ctions.cardActions')
         </div>
     </div>
 </div>

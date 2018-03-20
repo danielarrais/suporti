@@ -9,6 +9,7 @@ class StatusAtendimento extends Model
     public $timestamps = false;
     protected $table = "status_atendimento";
     protected $primaryKey = 'id_status';
+    private $status;
 
     public function getId()
     {
@@ -21,12 +22,12 @@ class StatusAtendimento extends Model
     }
     public function getStatus()
     {
-        return $this->attributes['status'];
+        return $this->status = $this->attributes['status'];
     }
 
     public function setStatus($status)
     {
-        $this->attributes['status'] = $status;
+        $this->status = $this->attributes['status'] = $status;
     }
     public function chamados(){
         return $this->hasOne('App\StatusAtendimento','id_status','id_status');

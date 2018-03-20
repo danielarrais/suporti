@@ -3,6 +3,6 @@
 @section('corpo')
     <br/>
     <div class="row container">
-        @include('include.chamadoCompleto')
+        @include('includes_uteis.chamados.chamadoCompleto')
     </div>
 @endsection

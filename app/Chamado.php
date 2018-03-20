@@ -17,12 +17,12 @@ class Chamado extends Model
 
     public function getId()
     {
-        return $this->attributes['id_chamado'];
+        return $this->attributes[$this->primaryKey];
     }
 
     public function setId($id)
     {
-        $this->attributes['id_chamado'] = $id;
+        $this->attributes[$this->primaryKey] = $id;
     }
 
     public function getTitulo()
@@ -45,6 +45,16 @@ class Chamado extends Model
         $this->attributes['descricao'] = $descricao;
     }
 
+    public function getMotivoRejeicao()
+    {
+        return $this->attributes['motivo_rejeicao'];
+    }
+
+    public function setMotivoRejeicao($descricao)
+    {
+        $this->attributes['motivo_rejeicao'] = $descricao;
+    }
+
     public function getUrgencia()
     {
         return $this->belongsTo("App\NivelUrgencia", "id_nivel_urgencia");
@@ -53,6 +63,16 @@ class Chamado extends Model
     public function setUrgencia($urgencia)
     {
         $this->attributes['id_nivel_urgencia'] = $urgencia;
+    }
+
+    public function getPrint()
+    {
+        return $this->belongsTo("App\PrintTela","id_print");
+    }
+
+    public function setPrint($id)
+    {
+        $this->attributes['id_print'] = $id;
     }
 
     public function getHAbertura()
@@ -143,7 +163,6 @@ class Chamado extends Model
     public function tempoDesdeAbertura(){
         $date1 = Carbon::createFromFormat('Y-m-d', date('Y-m-d', strtotime($this->getHAbertura()))."");
         $date2 = Carbon::createFromFormat('Y-m-d', date("Y-m-d")."");
-
         $value = $date2->diffInDays($date1);
         return $value;
     }
