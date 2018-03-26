@@ -14,7 +14,7 @@ class HomeSuporteController extends Controller
         if (Gate::denies('visualizar-chamados', new Chamado())) {
             abort(403, 'Você não pode navegar nessas águas!');
         }
-        $chamados = Chamado::all();
+        $chamados = Chamado::orderBy('horario_abertura', 'DESC')->get();
         return view('suporte.homeSuporte', compact('chamados'));
     }
 
@@ -69,7 +69,6 @@ class HomeSuporteController extends Controller
             return redirect()->route('suporte.home');
         }
     }
-
 
     public function carregarChamado($id)
     {

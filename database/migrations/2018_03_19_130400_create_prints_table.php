@@ -16,6 +16,7 @@ class CreatePrintsTable extends Migration
         Schema::create('prints', function (Blueprint $table) {
             $table->increments('id_print');
             $table->string("url",300);
+            $table->string("nome",300)->default("");
         });
     }
 

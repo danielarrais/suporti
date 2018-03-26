@@ -1,6 +1,6 @@
 @can('master', new \App\Usuario())
     <ul id="dropdown3{{$drop}}" class="dropdown-content">
-        <li><a href="{{route('suporte.home')}}">Usuários</a></li>
+        <li><a href="{{route('admin.home')}}">Administração</a></li>
     </ul>
 
     <li>

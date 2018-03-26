@@ -8,7 +8,7 @@
                 <span class="card-title"> <b>{{$perfil->getNome()}} {{$perfil->getSobreNome()}}</b></span>
                 <div class="row">
                     <div class="col s3 m3">
-                        <label for="status{{$perfil -> getId()}}">Setor:</label>
+                        <label for="status{{$perfil ->getId()}}">Setor:</label>
                         <p id="status{{$perfil -> getId()}}">{{$perfil->getSetor->getSetor()}}</p>
                     </div>
                     <div class="col s3 m3">

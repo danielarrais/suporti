@@ -36,7 +36,7 @@ class Setor extends Model
      */
     public function getSetor()
     {
-        return $this->setor = $this->attributes['nome'];
+        return $this->setor = $this->attributes['setor'];
     }
 
     /**
@@ -44,7 +44,7 @@ class Setor extends Model
      */
     public function setSetor($setor)
     {
-        $this->setor = $this->attributes['nome']= $setor;
+        $this->setor = $this->attributes['setor']= $setor;
     }
 
 
