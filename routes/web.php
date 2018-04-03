@@ -7,7 +7,7 @@ Route::get('/login', ['as' => 'site.login', 'uses' => 'LoginController@index']);
 Route::post('/login/validar', ['as' => 'site.login.validar', 'uses' => 'LoginController@logar']);
 Route::get('/login/sair', ['as' => 'site.login.sair', 'uses' => 'LoginController@sair']);
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth'] ], function () {
     //user
     Route::get('/user/alterarsenha', ['as' => 'user.alterarsenha', 'uses' => 'HomeUserController@formNovaSenha']);
     Route::post('/user/alterarsenha', ['as' => 'user.alterarsenha', 'uses' => 'HomeUserController@salvarNovaSenha']);

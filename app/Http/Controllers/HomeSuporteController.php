@@ -16,7 +16,7 @@ class HomeSuporteController extends Controller
         }
         $chamados = Chamado::orderBy('horario_abertura', 'DESC')->get();
 
-        $chamadosMeus = Chamado::where('id_atendente', '=', Usuario::usuarioLogado()->getId())->get();
+        $chamadosMeus = Chamado::where('id_atendente', '=', Usuario::usuarioLogado()->getId())->orderBy('horario_abertura', 'DESC')->get();
         return view('suporte.homeSuporte', compact('chamados', 'chamadosMeus'));
     }
 
@@ -29,14 +29,14 @@ class HomeSuporteController extends Controller
             ->orWhere('id_chamado', '=', $busca)
             ->orWhere('titulo', 'like', '%'.$busca.'%')
             ->orWhere('descricao', 'like', '%'.$busca.'%')
-            ->orWhere('motivo_rejeicao', 'like', '%'.$busca.'%')->get();
+            ->orWhere('motivo_rejeicao', 'like', '%'.$busca.'%')->orderBy('horario_abertura', 'DESC')->get();
         $chamadosMeus = Chamado::join('users', 'id_usuario', '=', 'users.id')
             ->where('id_atendente', '=', Usuario::usuarioLogado()->getId())
             ->orWhere('users.name', 'like', '%'.$busca.'%')
             ->orWhere('id_chamado', '=', $busca)
             ->orWhere('titulo', 'like', '%'.$busca.'%')
             ->orWhere('descricao', 'like', '%'.$busca.'%')
-            ->orWhere('motivo_rejeicao', 'like', '%'.$busca.'%')->get();get();
+            ->orWhere('motivo_rejeicao', 'like', '%'.$busca.'%')->orderBy('horario_abertura', 'DESC')->get();
         return view('suporte.homeSuporte', compact('chamados', 'chamadosMeus'));
     }
 

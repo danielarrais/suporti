@@ -21,8 +21,9 @@
                     </div>
                 </div>
                 <div>
-                    @can('master', new \App\Usuario())
-                        <div class="card-action">
+
+                    <div class="card-action">
+                        @can('master', new \App\Usuario())
                             @if($perfil->getId() != \App\Usuario::usuarioLogado()->getId())
                                 @if($perfil->isAtivo() && $perfil->getId() != \App\Usuario::usuarioLogado()->getId())
                                     <a class="waves-effect modal-trigger"
@@ -60,9 +61,10 @@
                                     </form>
                                 </div>
                             @endif
-                            <a class="grey-text right text-darken-4" href="{{URL::previous()}}">Voltar</a>
-                        </div>
-                    @endcan
+                        @endcan
+                        <a class="grey-text right text-darken-4" href="{{URL::previous()}}">Voltar</a>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -118,8 +118,8 @@ class UsuariosAdminController extends Controller
         $usuario = Usuario::find($dados['id']);
         $usuario->setSenha($novasenha);
         $usuario->setTrocarSenha(true);
-        $usuario->update();
         $this->enviarSenha($novasenha, $usuario);
+        $usuario->update();
         return redirect()->route('admin.usuarios')->with(['iduser'=>$dados['id'],'message'=>'Senha foi gerada com sucesso e enviada com sucesso para o email '.$usuario->getEmail(), 'novasenha'=>$novasenha]);
     }
 
@@ -136,7 +136,7 @@ class UsuariosAdminController extends Controller
                 'funcao'=>'required',
                 'nivel'=>'required',
                 'setor'=>'required',
-                'email'=>'email|required|unique:users',
+                'email'=>'email|required',
                 'sobrenome'=>'required'
             ],
             [
@@ -146,7 +146,6 @@ class UsuariosAdminController extends Controller
                 'setor.required'=>'Você deve informar o setor do usuário',
                 'email.required'=>'Você não pode deixar o campo email vazio',
                 'email.email'=>'O email informado não é válido',
-                'email.unique'=>'O email informado já é utilizado em outra conta',
                 'sobrenome.required'=>'Você não pode deixar o campo sobrenome vazio'
             ]
         );
