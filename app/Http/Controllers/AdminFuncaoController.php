@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Funcao;
+use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 

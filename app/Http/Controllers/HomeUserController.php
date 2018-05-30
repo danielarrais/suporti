@@ -35,7 +35,7 @@ class HomeUserController extends Controller
 
     public function index(){
         $urgencias = NivelUrgencia::all();
-        return view('user.novochamado', compact('urgencias'));
+        return view('user.novoChamado', compact('urgencias'));
     }
 
     public function salvar(Request $req){
@@ -150,7 +150,7 @@ class HomeUserController extends Controller
     }
 
     public function enviarChamado(Chamado $chamado, Usuario $usuario){
-        $send = new EnviarCopiaDoChamado($chamado);
-        Mail::to($usuario->getEmail())->send($send);
+//        $send = new EnviarCopiaDoChamado($chamado);
+//        Mail::to($usuario->getEmail())->send($send);
     }
 }
