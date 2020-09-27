@@ -15,7 +15,29 @@ class HomeSuporteController extends Controller
             abort(403, 'Você não pode navegar nessas águas!');
         }
         $chamados = Chamado::orderBy('horario_abertura', 'DESC')->get();
-        return view('suporte.homeSuporte', compact('chamados'));
+
+        $chamadosMeus = Chamado::where('id_atendente', '=', Usuario::usuarioLogado()->getId())->get();
+        return view('suporte.homeSuporte', compact('chamados', 'chamadosMeus'));
+    }
+
+    public function search(Request $req)
+    {
+        $dados = $req->all();
+        $busca = $dados['busca'];
+        $chamados = Chamado::join('users', 'id_usuario', '=', 'users.id')
+            ->where('users.name', 'like', '%'.$busca.'%')
+            ->orWhere('id_chamado', '=', $busca)
+            ->orWhere('titulo', 'like', '%'.$busca.'%')
+            ->orWhere('descricao', 'like', '%'.$busca.'%')
+            ->orWhere('motivo_rejeicao', 'like', '%'.$busca.'%')->get();
+        $chamadosMeus = Chamado::join('users', 'id_usuario', '=', 'users.id')
+            ->where('id_atendente', '=', Usuario::usuarioLogado()->getId())
+            ->orWhere('users.name', 'like', '%'.$busca.'%')
+            ->orWhere('id_chamado', '=', $busca)
+            ->orWhere('titulo', 'like', '%'.$busca.'%')
+            ->orWhere('descricao', 'like', '%'.$busca.'%')
+            ->orWhere('motivo_rejeicao', 'like', '%'.$busca.'%')->get();get();
+        return view('suporte.homeSuporte', compact('chamados', 'chamadosMeus'));
     }
 
     public function formRejeicao($id)

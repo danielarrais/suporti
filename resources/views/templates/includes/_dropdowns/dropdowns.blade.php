@@ -26,7 +26,7 @@
 @endcan
 <ul id="dropdown1{{$drop}}" class="dropdown-content">
     <li><a href="{{route('user.home')}}">Chamados</a></li>
-    <li><a href="#!">Perfil</a></li>
+    <li><a href="{{route('user.perfil.vizualizar', \App\Usuario::usuarioLogado()->getId())}}">Perfil</a></li>
     <li class="divider"></li>
     <li><a href="{{route('site.login.sair')}}">Sair</a></li>
 </ul>

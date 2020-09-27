@@ -11,33 +11,41 @@
         <br>
         <div class="col s1"></div>
         <form class="col s10" action="{{route('user.chamado.sucesso')}}" method="post" enctype="multipart/form-data">
+            @if(count($errors)!=0)
+                <div class="card-content left-align">
+                    @foreach($errors->all() as $erro)
+                        <span class="red-text text-accent-4">{{$erro}}</span><br/>
+                    @endforeach
+                </div>
+                <br/>
+            @endif
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="Descreva aqui de forma breve o problema" id="problema" name="titulo" type="text">
+                    <input value="{{old('titulo')}}" placeholder="Descreva aqui de forma breve o problema" id="problema" name="titulo" type="text">
                     <label for="problema">Problema</label>
                 </div>
 
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="descricao" name="descricao" class="materialize-textarea" placeholder="Nos dê mais detalhes do problema" ></textarea>
+                    <textarea value="{{old('descricao')}}" id="descricao" name="descricao" class="materialize-textarea" placeholder="Nos dê mais detalhes do problema" ></textarea>
                     <label for="descricao">Detalhes</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <select name="urgencia">
-                        <option value="" disabled selected>Selecione uma opção</option>
-                        <option class="green-text text-darken-4" value="1">Urgente</option>
-                        <option value="2">Menos urgente</option>
-                        <option value="3">Nenhuma urgência</option>
+                    <select required name="urgencia">
+                        <option value="" disabled @if(old('urgencia')==''){{'selected'}}@endif>Selecione uma opção</option>
+                        @foreach($urgencias as $urgencia)
+                            <option @if(old('urgencia')==$urgencia->getId()){{'selected'}}@endif value="{{$urgencia->getId()}}">{{$urgencia->getUrgencia()}}</option>
+                        @endforeach
                     </select>
                     <label>Urgência</label>
                 </div>
                 <div class="input-field file-field col s6">
                     <div class="btn blue">
                         <span>Print</span>
-                        <input type="file" name="imagem"/>
+                        <input value="{{old('imagem')}}" type="file" name="imagem"/>
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">

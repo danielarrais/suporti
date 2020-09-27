@@ -10,10 +10,7 @@ class Chamado extends Model
 {
     public $timestamps = false;
     protected $primaryKey = 'id_chamado';
-
-    protected $fillable = [
-        'id', 'titulo', 'decricao', 'urgencia', 'hAbertura'
-    ];
+    protected $table = 'chamados';
 
     public function getId()
     {

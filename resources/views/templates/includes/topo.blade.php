@@ -18,7 +18,7 @@
                 <a href="{{route('site.home')}}"> <span style="font-size:32px; color:#FFFFFF;">SUPOR</span><span
                             style="font-size:32px; color:#FFFF00;">TI</span></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                @if(Auth::guest())
+                @if(\App\Usuario::usuarioLogado()==null)
                     <ul class="right hide-on-med-and-down">
                         <a href="{{route('site.login')}}" class="write">Login</a>
                     </ul>

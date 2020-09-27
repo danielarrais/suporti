@@ -12,6 +12,7 @@ class Setor extends Model
     protected $primaryKey = 'id_setor';
     //NOME DA TABELA
     protected $table = "setores";
+    public $timestamps = false;
 
     private $setor;
 

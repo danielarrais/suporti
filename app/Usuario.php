@@ -25,6 +25,8 @@ class Usuario extends Authenticatable
     private $funcao;
     private $setor;
     private $nivel;
+    private $ativo;
+    private $trocarSenha;
 
     /**
      * @return mixed
@@ -103,7 +105,7 @@ class Usuario extends Authenticatable
      */
     public function setSenha($senha)
     {
-        $this->attributes['password'] = $senha;
+        $this->attributes['password'] = bcrypt($senha);
     }
 
     /**
@@ -111,7 +113,7 @@ class Usuario extends Authenticatable
      */
     public function getFuncao()
     {
-        return $this->belongsTo('App\Funcao',"id_funcao");
+        return $this->funcao = $this->belongsTo('App\Funcao',"id_funcao");
     }
 
     /**
@@ -127,7 +129,7 @@ class Usuario extends Authenticatable
      */
     public function getSetor()
     {
-        return $this->belongsTo('App\Setor',"id_setor");
+        return $this->setor = $this->belongsTo('App\Setor',"id_setor");
     }
 
     /**
@@ -143,7 +145,7 @@ class Usuario extends Authenticatable
      */
     public function getNivel()
     {
-        return $this->belongsTo("App\Nivel", "id_nivel");
+        return $this->nivel = $this->belongsTo("App\Nivel", "id_nivel");
     }
 
     /**
@@ -152,6 +154,32 @@ class Usuario extends Authenticatable
     public function setNivel($nivel)
     {
         $this->attributes['id_nivel']=$nivel;
+    }
+
+    public function isAtivo()
+    {
+        return $this->ativo = $this->attributes['ativo'];
+    }
+
+    /**
+     * @param mixed $nivel
+     */
+    public function setAtivo($ativo)
+    {
+        $this->attributes['ativo']=$ativo;
+    }
+
+    public function isTrocarSenha()
+    {
+        return $this->trocarSenha = $this->attributes['trocar_senha'];
+    }
+
+    /**
+     * @param mixed $nivel
+     */
+    public function setTrocarSenha($trocarsenha)
+    {
+        $this->attributes['trocar_senha']=$trocarsenha;
     }
 
     public function getChamados()
@@ -163,7 +191,7 @@ class Usuario extends Authenticatable
         return $this->hasOne('App\Usuario', "id_atendente");
     }
 
-    public static function usuarioLogado():Usuario{
+    public static function usuarioLogado(){
         return Auth::user();
     }
 }

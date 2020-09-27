@@ -4,10 +4,7 @@
     <div class="container">
         <br>
         <div class="row">
-            <div class="col hide-on-small-and-down m2">
-
-            </div>
-            <div class="col s6 m4">
+            <div class="col s4 m4">
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">Usuarios</span>
@@ -18,19 +15,27 @@
                     </div>
                 </div>
             </div>
-            <div class="col s6 m4">
+            <div class="col s4 m4">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title"> Categorias </span>
-                        <p>Gerencie as categorias de chamados</p>
+                        <span class="card-title">Setores</span>
+                        <p>Gerencie as setores da empresa</p>
                     </div>
                     <div class="card-action">
-                        <a href="{{URL::previous()}}">Gerenciar</a>
+                        <a href="{{route('admin.setores')}}">Gerenciar</a>
                     </div>
                 </div>
             </div>
-            <div class="col hide-on-small-and-down m2">
-
+            <div class="col s4 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title"> Funcoes </span>
+                        <p>Gerencie os cargos</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{route('admin.funcoes')}}">Gerenciar</a>
+                    </div>
+                </div>
             </div>
         </div>
 

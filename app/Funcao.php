@@ -12,6 +12,7 @@ class Funcao extends Model
     protected $primaryKey = 'id_funcao';
     //NOME DA TABELA
     protected $table = "funcao";
+    public $timestamps = false;
 
     private $funcao;
 

@@ -20,6 +20,11 @@
         $('ul.tabs').tabs('select_tab', 'tab_id');
         $('.collapsible').collapsible();
         $('.modal').modal();
+        $('#modalNovaSenha').modal('open');
+        $("select").material_select();
+
+        // for HTML5 "required" attribute
+        $("select[required]").css({display: "inline", height: 0, padding: 0, width: 0});
     });
 </script>
 </body>

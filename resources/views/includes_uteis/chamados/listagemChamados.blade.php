@@ -1,21 +1,22 @@
 <div class="row">
+    @php($num = random_int(1, 999999))
     <div class="col s12">
         <ul class="tabs grey lighten-3">
-            <li class="tab col s3 active white-text grey darken-4"><a href="#todos">CHAMADOS</a></li>
-            <li class="tab col s2"><a href="#abertos">Abertos</a></li>
-            <li class="tab col s3"><a href="#emAtendimento">Em atendimento</a></li>
-            <li class="tab col s2"><a href="#finalizados">Finalizados</a></li>
-            <li class="tab col s2"><a href="#rejeitados">Rejeitados</a></li>
+            <li class="tab col s3 active white-text grey darken-4"><a href="#todos{{$num}}">CHAMADOS</a></li>
+            <li class="tab col s2"><a href="#abertos{{$num}}">Abertos</a></li>
+            <li class="tab col s3"><a href="#emAtendimento{{$num}}">Em atendimento</a></li>
+            <li class="tab col s2"><a href="#finalizados{{$num}}">Finalizados</a></li>
+            <li class="tab col s2"><a href="#rejeitados{{$num}}">Rejeitados</a></li>
         </ul>
     </div>
-    <div id="todos" class="col s12">
+    <div id="todos{{$num}}" class="col s12">
         <div class="row">
             @foreach($chamados as $chamado)
                     @include('includes_uteis.chamados.chamadoResumo')
             @endforeach
         </div>
     </div>
-    <div id="rejeitados" class="col s12">
+    <div id="rejeitados{{$num}}" class="col s12">
         <div class="row">
             @foreach($chamados as $chamado)
                 @if($chamado->getStatus->getId() == 4)
@@ -24,7 +25,7 @@
             @endforeach
         </div>
     </div>
-    <div id="abertos" class="col s12">
+    <div id="abertos{{$num}}" class="col s12">
         <div class="row">
             @foreach($chamados as $chamado)
                 @if($chamado->getStatus->getId() == 1)
@@ -33,7 +34,7 @@
             @endforeach
         </div>
     </div>
-    <div id="emAtendimento" class="col s12">
+    <div id="emAtendimento{{$num}}" class="col s12">
         <div class="row">
             @foreach($chamados as $chamado)
                 @if($chamado->getStatus->getId() == 2)
@@ -42,7 +43,7 @@
             @endforeach
         </div>
     </div>
-    <div id="finalizados" class="col s12">
+    <div id="finalizados{{$num}}" class="col s12">
         <div class="row">
             @foreach($chamados as $chamado)
                 @if($chamado->getStatus->getId() == 3)
