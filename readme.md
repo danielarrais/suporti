@@ -4,7 +4,7 @@ Trabalho apresentado para a disciplina Linguagens e Técnicas de Programação V
 
 ## Linguagem
 
-O projeto tratasse de um sistema simples de chamado, desenvolvido com **Laravel** **5.3.** 
+O projeto trata-se de um sistema simples de chamado, desenvolvido com **Laravel** **5.3.** 
 Ele contém: rotas, formularios de cadastros, sistemas de autenticação e autorização, migrations para geração das tabelas etc.
 
 ## Executar o projeto
@@ -37,4 +37,4 @@ senha: **123456**
 login: **sa@gmail.com**
 senha: **123456**
 
-**Obs.:** esses usuário só estão disponíveis para quem utilizou o script [ScriptWithInserts.sql](https://gitlab.com/danielarraiscarvalho/suporti/blob/master/ScriptWithInserts.sql "ScriptWithInserts.sql") para o MySQL ou o banco SQLite já disponibilizado.
+**Obs.:** esses usuários só estarão disponíveis para quem utilizar o script [ScriptWithInserts.sql](https://gitlab.com/danielarraiscarvalho/suporti/blob/master/ScriptWithInserts.sql "ScriptWithInserts.sql") para o MySQL ou o banco SQLite já disponibilizado.
