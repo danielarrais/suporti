@@ -12,7 +12,7 @@ Ele contém: rotas, formularios de cadastros, sistemas de autenticação e autor
 Antes de rodar o comando de execução, deve-se executar o comando `composer update`, para que as extensões necessárias sejam baixadas pelo **composer**. Após isso, o comando `composer dump-autoload` deve ser executado para que o composer gere os **autoloads**.
 
 **Obs.:** esse comando necessitam do **composer** instalado na máquina, e configurado nas váriaveis de ambiente.
-Ele pode ser baixado aqui: https://getcomposer.org/.
+Ele pode ser baixado aqui: https://getcomposer.org/. Depois de baixado, ele deve ser adicionado as variáveis de ambiente do SO. No windows a pasta bin do composer fica em *C:\ProgramData\ComposerSetup\bin*.
 
 Para rodar o projeto, basta executar o comando `php artisan serve` no CMD/Terminal, dentro da pasta do projeto.
 
